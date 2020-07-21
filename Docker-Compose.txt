@@ -1,0 +1,22 @@
+wordpress:
+ image: wordpress
+ links:
+ - wordpress_db:mysql
+ ports:
+ - "7070:80"
+
+wordpress_db:
+ image: mariadb
+ environment:
+      MYSQL_ROOT_PASSWORD: dhwani
+
+phpadmin:
+ image: corbinu/docker-phpmyadmin
+ ports:
+ - "8181:80"
+ links:
+ - wordpress_db:mysql
+ environment:
+     MYSQL_USERNAME: root
+     MYSQL_ROOT_PASSWORD: dhwani
+~
